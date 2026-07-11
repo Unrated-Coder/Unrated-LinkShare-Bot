@@ -6,7 +6,7 @@
   <table>
     <tr>
       <td align="center">
-        <img src="https://telegra.ph/file/64d61b1f3933fbc18925e-4ba9274225dadacc17.jpg" width="90px" style="border-radius: 50%;" />
+        <img src="https://imgyx.pages.dev/Qzjvg" width="90px" style="border-radius: 50%;" />
       </td>
       <td>
         <img src="https://readme-typing-svg.herokuapp.com?color=00BFFF&width=600&lines=Hey+There,+This+is+LinkShareBot+%F0%9F%A5%80+%E2%9D%97%EF%B8%8F" />
