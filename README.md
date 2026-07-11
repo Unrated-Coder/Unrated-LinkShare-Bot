@@ -1,98 +1,132 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" />
-</p>
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://imgyx.pages.dev/Qzjvg" width="90px" style="border-radius: 50%;" />
-      </td>
-      <td>
-        <img src="https://readme-typing-svg.herokuapp.com?color=00BFFF&width=600&lines=Hey+There,+This+is+LinkShareBot+%F0%9F%A5%80+%E2%9D%97%EF%B8%8F" />
-      </td>
-    </tr>
-  </table>
-</div>
-
-<h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?color=FF69B4&width=500&lines=Welcome+to+LinkShareBot;Your+Ultimate+Telegram+Link+Sharing+Bot" />
-</h1>
-
-<p align="center">
-  <a href="https://t.me/Unrated_Coder">
-    <img src="https://img.shields.io/badge/Updates-Telegram-blue?style=for-the-badge&logo=telegram"/>
+  <a href="https://t.me/Unrated_Coder" target="_blank">
+    <img src="https://imgyx.pages.dev/Qzjvg" width="max" style="border-radius: 28px; border: 4px solid #00BFFF; box-shadow: 0 8px 30px rgba(0, 191, 255, 0.4); transition: transform 0.3s ease-in-out;" alt="Unrated-LinkShare-Bot Logo" />
   </a>
 </p>
 
-## 🌟 What is LinkShareBot?
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=00BFFF&width=550&height=50&lines=Hey+There!+Introducing...;LinkShareBot+%F0%9F%A5%80;The+Most+Advanced+Link+Bot%E2%9D%97%EF%B8%8F" alt="Typing SVG" />
+</p>
 
-**LinkShareBot** is a modern Telegram bot that allows you to share and manage unlimited Telegram channel links with automatic invite link generation and management. 
+<p align="center">
+  <strong>An ultra-high-performance, native Telegram link sharing and channel management engine powered by Pyrogram.</strong>
+</p>
 
-Powered by **Pyrogram**, it provides a seamless experience for users to join channels through secure, auto-expiring links. The bot includes advanced features like force subscription, bulk link generation, and request link management.
+<p align="center">
+  <a href="https://t.me/Unrated_Coder"><img src="https://img.shields.io/badge/Developer-@Unrated__Coder-orange?style=flat-square&logo=telegram&logoColor=white" /></a>
+  <a href="https://t.me/Unrated_Coder"><img src="https://img.shields.io/badge/Updates-Telegram-blue?style=flat-square&logo=telegram&logoColor=white" /></a>
+  <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Framework-Pyrogram-9B30FF?style=flat-square&logo=telegram" />
+</p>
 
-## 🚀 Features
+<hr style="border: 0; height: 1px; background: linear-gradient(to right, rgba(0, 191, 255, 0), rgba(0, 191, 255, 0.75), rgba(0, 191, 255, 0)); margin: 30px 0;" />
 
-| 🌟 Feature                | 🔎 Description                              |
-| ------------------------- | ------------------------------------------- |
-| 📺 Unlimited Channels     | Add and manage unlimited Telegram channels  |
-| 🔗 Auto Invite Links      | Generate secure, auto-expiring invite links |
-| ⏱️ Auto Revoke            | Links automatically revoke after 5 minutes  |
-| 📦 Bulk Generation        | Generate links for multiple channels at once |
-| 📋 Pagination Support     | Navigate through large channel lists easily |
-| 🔄 Request Links          | Support for join request links              |
-| 🛡️ Force Subscription     | Require users to join specific channels     |
-| 📊 Bot Statistics         | Monitor bot usage and user statistics       |
+## 🌟 Overview
 
-## 🛠️ Commands
+**LinkShareBot** is an enterprise-grade, high-performance Telegram native automation assistant designed to manage, store, and distribute Telegram channel links seamlessly. 
 
-### Channel & Link Management (Owner/Admins)
-- <b>`/addch <channel_id>`</b> — Add a channel to the bot (admin only)
-- <b>`/delch <channel_id>`</b> — Remove a channel from the bot (admin only)
-- <b>`/channels`</b> — Show all connected channels as buttons (paginated)
-- <b>`/reqlink`</b> — Show all request links for channels (paginated)
-- <b>`/links`</b> — Show all channel links as text (paginated)
-- <b>`/bulklink <id1> <id2> ...`</b> — Generate links for multiple channel IDs at once
+Powered by **Pyrogram**, it secures your community traffic by automatically generating, monitoring, and revoking invite links. It features advanced utilities like Force Subscription gating, bulk generation pipelines, and automated join-request approval engines.
 
-- <b>`/reqtime`</b> — Set the auto-approve request timer duration.
-- <b>`/reqmode`</b> — Toggle auto request approval mode (ON/OFF).
-- <b>`/approveon`</b> — Enable auto request approval for a specific channel.
-- <b>`/approveoff`</b> — Disable auto request approval for a specific channel.
+---
 
-### Force Subscription (Owner/Admins)
-- <b>`/add_fsub <channel_id> <mode>`</b> — Add a channel to FSub list (modes: `normal`, `request`)
-- <b>`/fsub`</b> — See all FSub channels
-- <b>`/del_fsub <channel_id>`</b> — Remove a channel from FSub list
+## ⚡ Core Capabilities
 
-### Admin Commands
-- <b>`/stats`</b> — Show bot stats (owner only)
-- <b>`/status`</b> — Show bot status (admins)
-- <b>`/broadcast`</b> — Broadcast a message to all users (admins)
+*   🌐 **Multi-Channel Indexing** — Register, monitor, and manage unlimited Telegram channels dynamically in a single unified database.
+*   🔒 **Secure Auto-Invites** — Generate secure, custom single-use invite links on-the-fly to prevent unauthorized link sharing.
+*   ⏱️ **Self-Revoking Links** — Enhanced link protection that automatically revokes and invalidates generated links after 5 minutes.
+*   📦 **Bulk Generation** — Mass-generate custom invite links for multiple target channel IDs instantly in a single command execution.
+*   📋 **Paginated Navigation** — Smooth, lag-free pagination using inline keyboards for effortless navigation through large channel lists.
+*   🔄 **Request Queue Manager** — Direct support for Join Request links with automated request monitoring.
+*   🛡️ **Force-Subscribe (FSub)** — Gate bot access by strictly requiring users to join your specified channels or request pools first.
+*   📊 **Analytics Dashboard** — Live system diagnostics, total active users, and database analytics at your fingertips.
 
-## 🔑 Environment Variables
+---
 
-Below are the required environment variables for deployment.
+## 🎮 Command Console
+
+<details>
+<summary><b>📅 Channel & Link Management (Admins Only)</b></summary>
+<br>
+
+*   `/addch <channel_id>` — Registers a new target channel into the central database.
+*   `/delch <channel_id>` — Removes a registered channel from the database.
+*   `/channels` — Launches the paginated interactive channel list with inline navigation.
+*   `/reqlink` — Displays active join-request links for connected channels.
+*   `/links` — Outputs all generated active channels as clean list format.
+*   `/bulklink <id1> <id2>` — Mass generates invite links for multiple channels instantly.
+
+</details>
+
+<details>
+<summary><b>⏱️ Auto-Approval Engine</b></summary>
+<br>
+
+*   `/reqtime` — Sets the custom sleep delay before automatically approving join requests.
+*   `/reqmode` — Toggles the Auto Request Approval system state [`ON` / `OFF`].
+*   `/approveon` — Enables automated request approval for a specific channel.
+*   `/approveoff` — Disables automated request approval for a specific channel.
+
+</details>
+
+<details>
+<summary><b>🛡️ Force Subscription (FSub) Gate</b></summary>
+<br>
+
+*   `/add_fsub <channel_id> <mode>` — Configures a channel for Force-Sub (Modes: `normal`, `request`).
+*   `/fsub` — Lists all channels currently active in the FSub gatekeeper.
+*   `/del_fsub <channel_id>` — Disables FSub requirement for a channel.
+
+</details>
+
+<details>
+<summary><b>📊 System & Admin Utilities (Admins Only)</b></summary>
+<br>
+
+*   `/stats` — Queries total active users, database rows, and subscription analytics.
+*   `/status` — Queries live server metrics, CPU usage, RAM utilization, and uptime.
+*   `/broadcast` — Dispatches a global push notification to all registered bot users.
+
+</details>
+
+---
+
+## ⚙️ Environment Configuration
+
+Setup these variables inside your hosting platform environment configuration:
 
 ```env
-API_ID=              # Required - Get from https://my.telegram.org
-API_HASH=            # Required - From https://my.telegram.org
-TG_BOT_TOKEN=        # Required - Get from @BotFather
-OWNER_ID=            # Required - Your Telegram user ID
-ADMINS=              # Optional - Admin user IDs (space separated)
-DB_URL=              # Required - MongoDB connection string
-DB_NAME=             # Optional - MongoDB database name (default: Links-Share)
-DATABASE_CHANNEL=    # Required - Private channel ID for link storage
-PORT=                # Optional - Port for web server (default: 8080)
+# --- Core Bot Credentials ---
+API_ID=your_api_id
+API_HASH=your_api_hash
+TG_BOT_TOKEN=your_bot_token
+
+# --- Access Control & Moderation ---
+OWNER_ID=your_owner_id
+ADMINS=admin_ids_space_separated
+
+# --- Database & Storage ---
+DB_URL=your_mongodb_url
+DB_NAME=Links-Share
+DATABASE_CHANNEL=your_log_channel_id
+
+# --- Web Server Port ---
+PORT=8080
 ```
 
-## ☁️ Quick Deploy
+---
 
-| Platform                | Deploy Link                                                                                                                                                                                               |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🌍 **Heroku Deploy**    | <a href="http://dashboard.heroku.com/new?template=https://github.com/yourusername/LinkShareBot"><img src="https://img.shields.io/badge/Deploy%20to-Heroku-purple?style=for-the-badge&logo=heroku"/></a> |
-| 🌍 **Koyeb Deploy**     | <a href="https://app.koyeb.com/deploy?type=git&repository=github.com/yourusername/LinkShareBot&branch=main&name=linksharebot"><img src="https://www.koyeb.com/static/images/deploy/button.svg" /></a> |
-| 🌍 **Render Deploy**    | <a href="https://render.com/deploy?repo=https://github.com/yourusername/LinkShareBot"><img src="https://render.com/images/deploy-to-render-button.svg" /></a> |
+## ☁️ Instant Deployment
 
-### 🔖 Credits
+Deploy your custom instance of **LinkShareBot** directly to top cloud hosting platforms with a single click:
 
-* <b> *Upgraded by <a href="https://t.me/Unrated_Coder">@Unrated_Coder</a> from Telegram* </b>
+| Hosting Provider | Deploy Triggers |
+| :--- | :--- |
+| **Heroku** | <a href="http://dashboard.heroku.com/new?template=https://github.com/yourusername/LinkShareBot"><img src="https://img.shields.io/badge/Deploy--to--Heroku-7056BF?style=for-the-badge&logo=heroku&logoColor=white"/></a> |
+| **Koyeb** | LinkShareBotps://app.koyeb.com/deploy?type=git&repository=github.com/yourusername/LinkShareBot&branch=main&name=linksharebot"><img src="https://img.shields.io/badge/Deploy--to--Koyeb-1F2937?style=for-the-badge&logo=koyeb&logoColor=white"/></a> |
+| **Render** | <a href="https://render.com/deploy?repo=https://github.com/yourusername/LinkShareBot"><img src="https://img.shields.io/badge/Deploy--to--Render-46E3B7?style=for-the-badge&logo=render&logoColor=white"/></a> |
+
+---
+
+<p align="center">
+  Developed & maintained with ⚡️ by <a href="https://t.me/Unrated_Coder"><b>@Unrated_Coder</b></a> on Telegram
+</p>
