@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/Unrated-Coder/Unrated-LinkShare-Bot" target="_blank">
-    <img src="https://imgyx.pages.dev/Qzjvg" width="100%" style="border-radius: 20px; border: 3px solid #00BFFF; box-shadow: 0 8px 30px rgba(0, 191, 255, 0.3); transition: transform 0.3s ease-in-out;" alt="Unrated-LinkShare-Bot Header" />
+    <img src="https://imgyx.pages.dev/Qzjvg" width="100%" style="border-radius: 20px; border: 3px solid #00BFFF; box-shadow: 0 8px 30px rgba(0, 191, 255, 0.4); transition: transform 0.3s ease-in-out;" alt="Unrated-LinkShare-Bot Header" />
   </a>
 </p>
 
@@ -19,16 +19,16 @@
   <img src="https://img.shields.io/badge/Framework-Pyrogram-9B30FF?style=flat-square&logo=telegram" />
 </p>
 
-<!-- Sleek Horizontal Navigation Menu -->
+<!-- Sleek Horizontal Navigation Menu (All Emojis Removed) -->
 <p align="center">
-  <a href="#overview">🌟 Overview</a> •
-  <a href="#capabilities">⚡ Capabilities</a> •
-  <a href="#workflow">🔄 Workflow</a> •
-  <a href="#console">🎮 Console</a> •
-  <a href="#config">⚙️ Config</a> •
-  <a href="#installation">🛠️ Install</a> •
-  <a href="#docker">🐳 Docker</a> •
-  <a href="#deployment">☁️ Deploy</a>
+  <a href="#overview">Overview</a> •
+  <a href="#core-capabilities">Capabilities</a> •
+  <a href="#system-workflow">Workflow</a> •
+  <a href="#command-console">Console</a> •
+  <a href="#environment-configuration">Configuration</a> •
+  <a href="#local-installation">Installation</a> •
+  <a href="#docker-deployment">Docker</a> •
+  <a href="#instant-deployment">Deployment</a>
 </p>
 
 <hr style="border: 0; height: 1px; background: linear-gradient(to right, rgba(0, 191, 255, 0), rgba(0, 191, 255, 0.75), rgba(0, 191, 255, 0)); margin: 30px 0;" />
@@ -56,17 +56,18 @@ Powered by **Pyrogram**, it secures your community traffic by automatically gene
 
 ## System Workflow
 
-```text
-┌────────────────┐       ┌──────────────────────┐       ┌─────────────────┐
-│  User Joins    │ ───► │  Force Sub Check     │ ───► │ Request Approved│
-│  Via Link      │       │  (Database Verified) │       │ (Auto or Timer) │
-└────────────────┘       └──────────────────────┘       └─────────────────┘
-                                    │                             │
-                                    ▼                             ▼
-                         ┌──────────────────────┐       ┌─────────────────┐
-                         │  Access Restricted   │       │ Invite Revoked  │
-                         │  (Prompts Joining)   │       │ (After 5 Mins)  │
-                         └──────────────────────┘       └─────────────────┘
+```mermaid
+graph TD
+    A[User Joins Via Link] --> B{Force Sub Check}
+    B -- Database Verified --> C[Request Approved <br> Auto or Timer]
+    B -- Verification Failed --> D[Access Restricted <br> Prompts Joining]
+    C --> E[Invite Revoked <br> After 5 Mins]
+
+    style A fill:#00BFFF,stroke:#00BFFF,stroke-width:2px,color:#090d16
+    style B fill:#111827,stroke:#1f2937,stroke-width:2px,color:#f9fafb
+    style C fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399
+    style D fill:#311010,stroke:#ef4444,stroke-width:2px,color:#f87171
+    style E fill:#111827,stroke:#1f2937,stroke-width:2px,color:#9ca3af
 ```
 
 ---
