@@ -1,0 +1,9 @@
+pyrofork==2.3.59
+TgCrypto 
+python-dotenv
+pymongo 
+dnspython 
+motor 
+aiohttp
+asyncio
+aiofiles
