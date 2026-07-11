@@ -19,20 +19,19 @@
   <img src="https://img.shields.io/badge/Framework-Pyrogram-9B30FF?style=flat-square&logo=telegram" />
 </p>
 
+<!-- Sleek Horizontal Navigation Menu -->
+<p align="center">
+  <a href="#overview">🌟 Overview</a> •
+  <a href="#capabilities">⚡ Capabilities</a> •
+  <a href="#workflow">🔄 Workflow</a> •
+  <a href="#console">🎮 Console</a> •
+  <a href="#config">⚙️ Config</a> •
+  <a href="#installation">🛠️ Install</a> •
+  <a href="#docker">🐳 Docker</a> •
+  <a href="#deployment">☁️ Deploy</a>
+</p>
+
 <hr style="border: 0; height: 1px; background: linear-gradient(to right, rgba(0, 191, 255, 0), rgba(0, 191, 255, 0.75), rgba(0, 191, 255, 0)); margin: 30px 0;" />
-
-## Table of Contents
-
-* [Overview](#overview)
-* [Core Capabilities](#core-capabilities)
-* [System Workflow](#system-workflow)
-* [Command Console](#command-console)
-* [Environment Configuration](#environment-configuration)
-* [Local Installation](#local-installation)
-* [Docker Deployment](#docker-deployment)
-* [Instant Deployment](#instant-deployment)
-
----
 
 ## Overview
 
@@ -122,26 +121,19 @@ Powered by **Pyrogram**, it secures your community traffic by automatically gene
 
 ## Environment Configuration
 
-Setup these variables inside your hosting platform environment configuration:
+Configure the following environment variables inside your hosting platform settings or create a local `.env` file:
 
-```env
-# --- Core Bot Credentials ---
-API_ID=your_api_id
-API_HASH=your_api_hash
-TG_BOT_TOKEN=your_bot_token
-
-# --- Access Control & Moderation ---
-OWNER_ID=your_owner_id
-ADMINS=admin_ids_space_separated
-
-# --- Database & Storage ---
-DB_URL=your_mongodb_url
-DB_NAME=Links-Share
-DATABASE_CHANNEL=your_log_channel_id
-
-# --- Web Server Port ---
-PORT=8080
-```
+| Variable Name | Description / Value |
+| :--- | :--- |
+| `API_ID` | Your Telegram API ID obtained from [my.telegram.org](https://my.telegram.org) |
+| `API_HASH` | Your Telegram API Hash obtained from [my.telegram.org](https://my.telegram.org) |
+| `TG_BOT_TOKEN` | Your Telegram Bot Token obtained from [@BotFather](https://t.me/BotFather) |
+| `OWNER_ID` | Telegram User ID of the primary bot owner |
+| `ADMINS` | Space-separated list of authorized Admin User IDs (e.g., `123456 789012`) |
+| `DB_URL` | MongoDB Connection URI string (e.g., `mongodb+srv://...`) |
+| `DB_NAME` | MongoDB database name (defaults to `Links-Share` if not specified) |
+| `DATABASE_CHANNEL` | Telegram Channel ID used for logging and database backups (e.g., `-100...`) |
+| `PORT` | Web server port configuration (default: `8080` for Koyeb/Render binding) |
 
 ---
 
@@ -195,15 +187,15 @@ Deploy your custom instance of **LinkShareBot** directly to top cloud hosting pl
 
 <p align="center">
   <a href="https://dashboard.heroku.com/new?template=https://github.com/Unrated-Coder/Unrated-LinkShare-Bot" target="_blank">
-    <img src="https://img.shields.io/badge/Deploy--to--Heroku-7056BF?style=for-the-badge&logo=heroku&logoColor=white" alt="Deploy to Heroku" />
+    <img src="https://img.shields.io/badge/Deploy--to--Heroku-7056BF?style=for-the-badge&logo=heroku&logoColor=white" height="38" alt="Deploy to Heroku" />
   </a>
   &nbsp;&nbsp;
   <a href="https://app.koyeb.com/deploy?type=git&repository=github.com/Unrated-Coder/Unrated-LinkShare-Bot&branch=main&name=unrated-linkshare-bot" target="_blank">
-    <img src="https://img.shields.io/badge/Deploy--to--Koyeb-1F2937?style=for-the-badge&logo=koyeb&logoColor=white" alt="Deploy to Koyeb" />
+    <img src="https://img.shields.io/badge/Deploy--to--Koyeb-1F2937?style=for-the-badge&logo=koyeb&logoColor=white" height="38" alt="Deploy to Koyeb" />
   </a>
   &nbsp;&nbsp;
   <a href="https://render.com/deploy?repo=https://github.com/Unrated-Coder/Unrated-LinkShare-Bot" target="_blank">
-    <img src="https://img.shields.io/badge/Deploy--to--Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Deploy to Render" />
+    <img src="https://img.shields.io/badge/Deploy--to--Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" height="38" alt="Deploy to Render" />
   </a>
 </p>
 
