@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>An ultra-high-performance, native Telegram link sharing and channel management engine powered by Pyrogram.</strong>
+  <strong>An ultra-high-performance, native Telegram link sharing and channel management engine powered by Pyrofork.</strong>
 </p>
 
 <p align="center">
