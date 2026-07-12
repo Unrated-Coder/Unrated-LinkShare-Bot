@@ -17,6 +17,7 @@ import random
 from datetime import datetime, timedelta
 from config import *
 from database.database import *
+import database.database as db
 from plugins.newpost import revoke_invite_after_5_minutes
 from helper_func import *
 
@@ -230,6 +231,44 @@ async def get_link_creation_time(channel_id):
 
 # Create a global dictionary to store chat data
 chat_data_cache = {}
+
+
+async def check_subscription_status(client: Client, user_id: int, fsub_channels: list):
+    must_join = []
+    for ch in fsub_channels:
+        channel_id = ch['channel_id']
+        mode = ch.get('mode', 'normal')
+        try:
+            member = await client.get_chat_member(channel_id, user_id)
+            if mode == "request" and member.status == ChatMemberStatus.BANNED:
+                must_join.append(ch)
+        except UserNotParticipant:
+            must_join.append(ch)
+        except Exception as e:
+            print(f"FSub Check Error for {channel_id}: {e}")
+
+    if not must_join:
+        return True, "", None
+
+    buttons = []
+    for ch in must_join:
+        try:
+            fsub_id = ch['channel_id']
+            mode = ch.get('mode', 'normal')
+            chat = await client.get_chat(fsub_id)
+            if mode == "request":
+                link = chat.invite_link or (await client.create_chat_invite_link(fsub_id, creates_join_request=True)).invite_link
+            else:
+                link = chat.invite_link or (await client.export_chat_invite_link(fsub_id))
+            buttons.append([InlineKeyboardButton(f"Join {chat.title}", url=link)])
+        except Exception as e:
+            print(f"FSub Button Error: {e}")
+
+    buttons.append([InlineKeyboardButton("🔄 Check Again", callback_data="check_sub")])
+
+    markup = InlineKeyboardMarkup(buttons)
+    message_text = "<b>👋 Welcome!\n\nTo use this bot, you must join our channels first. Click the buttons below to join, then click 'Check Again'.</b>"
+    return False, message_text, markup
 
 
 @Client.on_callback_query(filters.regex("close"))

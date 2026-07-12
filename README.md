@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>An ultra-high-performance, native Telegram link sharing and channel management engine powered by Pyrofork.</strong>
+  <strong>An ultra-high-performance, native Telegram link sharing and channel management engine powered by Pyrofork (Pyrogram v2).</strong>
 </p>
 
 <p align="center">
@@ -37,7 +37,7 @@
 
 **LinkShareBot** is an enterprise-grade, high-performance Telegram native automation assistant designed to manage, store, and distribute Telegram channel links seamlessly. 
 
-Powered by **Pyrogram**, it secures your community traffic by automatically generating, monitoring, and revoking invite links. It features advanced utilities like Force Subscription gating, bulk generation pipelines, and automated join-request approval engines.
+Powered by **Pyrofork (Pyrogram)**, it secures your community traffic by automatically generating, monitoring, and revoking invite links. It features advanced utilities like Force Subscription gating, bulk generation pipelines, and automated join-request approval engines.
 
 ---
 
@@ -78,12 +78,14 @@ graph TD
 <summary><b>📅 Channel & Link Management (Admins Only)</b></summary>
 <br>
 
-*   `/addch <channel_id>` — Registers a new target channel into the central database.
-*   `/delch <channel_id>` — Removes a registered channel from the database.
-*   `/channels` — Launches the paginated interactive channel list with inline navigation.
-*   `/reqlink` — Displays active join-request links for connected channels.
-*   `/links` — Outputs all generated active channels as clean list format.
-*   `/bulklink <id1> <id2>` — Mass generates invite links for multiple channels instantly.
+*   `/addch <channel_id>` or `/addchat <channel_id>` — Registers a new target channel into the central database.
+*   `/delch <channel_id>` or `/delchat <channel_id>` — Removes a registered channel from the database.
+*   `/channels` — Displays connected channels with ID and Name (paginated).
+*   `/ch_links` — Launches the paginated interactive channel list with inline navigation.
+*   `/reqlink` — Displays active join-request links for connected channels with inline navigation.
+*   `/links` — Outputs all generated active channel links as a clean list format with pagination.
+*   `/bulklink <id1> <id2> ...` — Mass generates invite links for multiple channels instantly.
+*   `/genlink <link>` — Encodes and stores a custom link in the database channel and database, returning normal and request links.
 
 </details>
 
@@ -91,10 +93,10 @@ graph TD
 <summary><b>⏱️ Auto-Approval Engine</b></summary>
 <br>
 
-*   `/reqtime` — Sets the custom sleep delay before automatically approving join requests.
-*   `/reqmode` — Toggles the Auto Request Approval system state [`ON` / `OFF`].
-*   `/approveon` — Enables automated request approval for a specific channel.
-*   `/approveoff` — Disables automated request approval for a specific channel.
+*   `/reqtime <seconds>` — Sets the custom sleep delay before automatically approving join requests.
+*   `/reqmode <on/off>` — Toggles the Auto Request Approval system state [`on` / `off`].
+*   `/approveon <channel_id>` — Enables automated request approval for a specific channel.
+*   `/approveoff <channel_id>` — Disables automated request approval for a specific channel.
 
 </details>
 
@@ -109,12 +111,23 @@ graph TD
 </details>
 
 <details>
+<summary><b>👮 Admin Management (Owner Only)</b></summary>
+<br>
+
+*   `/addadmin <user_id>` — Adds a user to the administrators list.
+*   `/deladmin <user_id>` — Removes a user from the administrators list.
+*   `/admins` — Lists all registered custom administrator user IDs.
+
+</details>
+
+<details>
 <summary><b>📊 System & Admin Utilities (Admins Only)</b></summary>
 <br>
 
-*   `/stats` — Queries total active users, database rows, and subscription analytics.
-*   `/status` — Queries live server metrics, CPU usage, RAM utilization, and uptime.
-*   `/broadcast` — Dispatches a global push notification to all registered bot users.
+*   `/stats` — (Owner only) Queries total active users and bot uptime.
+*   `/status` — Queries live server metrics, ping, and bot uptime.
+*   `/broadcast` — (Admin only) Dispatches a global push notification to all registered bot users with advanced modes (`pin`, `delete <seconds>`, `silent`).
+*   `/cancel` — (Admin only) Cancels an active broadcast in progress.
 
 </details>
 
@@ -126,15 +139,23 @@ Configure the following environment variables inside your hosting platform setti
 
 | Variable Name | Description / Value |
 | :--- | :--- |
-| `API_ID` | Your Telegram API ID obtained from [my.telegram.org](https://my.telegram.org) |
+| `API_ID` / `APP_ID` | Your Telegram API ID obtained from [my.telegram.org](https://my.telegram.org) |
 | `API_HASH` | Your Telegram API Hash obtained from [my.telegram.org](https://my.telegram.org) |
 | `TG_BOT_TOKEN` | Your Telegram Bot Token obtained from [@BotFather](https://t.me/BotFather) |
 | `OWNER_ID` | Telegram User ID of the primary bot owner |
 | `ADMINS` | Space-separated list of authorized Admin User IDs (e.g., `123456 789012`) |
-| `DB_URL` | MongoDB Connection URI string (e.g., `mongodb+srv://...`) |
+| `DB_URI` / `DB_URL` / `DATABASE_URL` | MongoDB Connection URI string (e.g., `mongodb+srv://...`) |
 | `DB_NAME` | MongoDB database name (defaults to `Links-Share` if not specified) |
 | `DATABASE_CHANNEL` | Telegram Channel ID used for logging and database backups (e.g., `-100...`) |
 | `PORT` | Web server port configuration (default: `8080` for Koyeb/Render binding) |
+| `CHAT_ID` | Space/comma-separated list of Telegram Chat/Channel IDs for Auto Approval |
+| `APPROVED_WELCOME` | Auto-Welcome status (`on` / `off`, default is `on`) |
+| `APPROVED_WELCOME_TEXT` | Custom HTML welcome text message to send to auto-approved users |
+| `TG_BOT_WORKERS` | Number of concurrent bot workers (default is `40`) |
+| `START_PIC` / `START_IMG` | Link to the photo shown on the start message command |
+| `START_MSG` | HTML custom starting message text |
+| `HELP_MESSAGE` | HTML custom help message text |
+| `ABOUT_MESSAGE` | HTML custom about message text |
 
 ---
 
@@ -163,7 +184,7 @@ pip3 install -r requirements.txt
 cp sample_config.env .env  # Rename and configure values inside .env file
 
 # 5. Start the engine
-python3 -m bot
+python3 main.py
 ```
 
 ---

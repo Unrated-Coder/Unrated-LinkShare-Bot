@@ -4,6 +4,7 @@ import asyncio
 from config import *
 from pyrogram import Client, filters
 from pyrogram.types import Message, User, ChatJoinRequest, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import FloodWait, ChatAdminRequired, RPCError, UserNotParticipant
 from database.database import set_approval_off, is_approval_off
 from helper_func import *
@@ -35,12 +36,12 @@ async def autoapprove(client, message: ChatJoinRequest):
     # Check if user is already a participant before approving
     try:
         member = await client.get_chat_member(chat.id, user.id)
-        if member.status in ["member", "administrator", "creator"]:
+        if member.status in [ChatMemberStatus.MEMBER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER]:
             print(f"User {user.id} is already a participant of {chat.id}, skipping approval.")
             return
-    except UserNotParticipant:
-        # User is not a member, handle accordingly
-        pass
+    except Exception as e:
+        # Catch all exceptions so missing permissions or other errors don't halt approval
+        print(f"Error checking chat member status for user {user.id} in chat {chat.id}: {e}. Proceeding with approval.")
 
     try:
         await client.approve_chat_join_request(chat_id=chat.id, user_id=user.id)
