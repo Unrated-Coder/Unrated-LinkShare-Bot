@@ -145,7 +145,7 @@ Configure the following environment variables inside your hosting platform setti
 | `OWNER_ID` | Telegram User ID of the primary bot owner |
 | `ADMINS` | Space-separated list of authorized Admin User IDs (e.g., `123456 789012`) |
 | `DB_URI` / `DB_URL` / `DATABASE_URL` | MongoDB Connection URI string (e.g., `mongodb+srv://...`) |
-| `DB_NAME` | MongoDB database name (defaults to `Links-Share` if not specified) |
+| `DB_NAME` | MongoDB database name (defaults to `Unrated-LinkShare-Bot` if not specified) |
 | `DATABASE_CHANNEL` | Telegram Channel ID used for logging and database backups (e.g., `-100...`) |
 | `PORT` | Web server port configuration (default: `8080` for Koyeb/Render binding) |
 | `CHAT_ID` | Space/comma-separated list of Telegram Chat/Channel IDs for Auto Approval |
