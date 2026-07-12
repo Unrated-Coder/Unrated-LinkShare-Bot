@@ -7,7 +7,7 @@
     "link-share",
     "pyrogram"
   ],
-  "repository": "https://github.com/yourusername/LinkShareBot",
+  "repository": "https://github.com/Unrated-Coder/Unrated-LinkShare-Bot",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Your Bot token, Get it from @Botfather",
@@ -31,7 +31,7 @@
     },
     "DB_NAME": {
       "description": "MongoDB database name",
-      "value": "Links-Share",
+      "value": "Unrated-LinkShare-Bot",
       "required": false
     },
     "DATABASE_CHANNEL": {
