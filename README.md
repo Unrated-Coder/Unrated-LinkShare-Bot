@@ -21,14 +21,14 @@
 
 <!-- Sleek Horizontal Navigation Menu (All Emojis Removed) -->
 <p align="center">
-  <a href="#overview">Overview</a> •
+  • <a href="#overview">Overview</a> •
   <a href="#core-capabilities">Capabilities</a> •
   <a href="#system-workflow">Workflow</a> •
   <a href="#command-console">Console</a> •
   <a href="#environment-configuration">Configuration</a> •
   <a href="#local-installation">Installation</a> •
   <a href="#docker-deployment">Docker</a> •
-  <a href="#instant-deployment">Deployment</a>
+  <a href="#instant-deployment">Deployment</a> •
 </p>
 
 <hr style="border: 0; height: 1px; background: linear-gradient(to right, rgba(0, 191, 255, 0), rgba(0, 191, 255, 0.75), rgba(0, 191, 255, 0)); margin: 30px 0;" />
