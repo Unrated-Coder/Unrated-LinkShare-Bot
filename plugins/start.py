@@ -1,3 +1,6 @@
+# Bluuuuuuuuuuhh....🥴 Visit our Channel ~ t.me/Unrated_Coder
+# Nothing... 
+# 😶
 
 import asyncio
 import base64
@@ -195,7 +198,7 @@ async def start_command(client: Client, message: Message):
             [
                 [InlineKeyboardButton("• ᴀʙᴏᴜᴛ", callback_data="about"),
                  InlineKeyboardButton("ᴄʜᴀɴɴᴇʟs •", callback_data="channels")],
-                [InlineKeyboardButton("• Jᴏɪɴ ᴜᴘᴅᴀᴛᴇs •", url="https://t.me/Zoro_Anime_Zone")]
+                [InlineKeyboardButton("• Jᴏɪɴ ᴜᴘᴅᴀᴛᴇs •", url="https://t.me/Unrated_Coder")]
             ]
         )
         
@@ -570,7 +573,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             [
                 [InlineKeyboardButton("• ᴀʙᴏᴜᴛ", callback_data="about"),
                  InlineKeyboardButton("ᴄʜᴀɴɴᴇʟs •", callback_data="channels")],
-                [InlineKeyboardButton("• Jᴏɪɴ ᴜᴘᴅᴀᴛᴇs •", url="https://t.me/Zoro_Anime_Zone")]
+                [InlineKeyboardButton("• Jᴏɪɴ ᴜᴘᴅᴀᴛᴇs •", url="https://t.me/Unrated_Coder")]
             ]
         )
         try:
