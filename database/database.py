@@ -355,3 +355,44 @@ async def is_approval_off(channel_id: int) -> bool:
     except Exception as e:
         print(f"Error checking approval_off for channel {channel_id}: {e}")
         return False
+
+async def show_channels() -> List[int]:
+    """Get all channel IDs in FSub list."""
+    try:
+        channels = await fsub_channels_collection.find({'status': 'active'}).to_list(None)
+        return [ch['channel_id'] for ch in channels if isinstance(ch, dict) and 'channel_id' in ch]
+    except Exception as e:
+        print(f"Error fetching show_channels: {e}")
+        return []
+
+async def get_channel_mode(channel_id: int) -> str:
+    """Get the FSub mode for a channel."""
+    if not isinstance(channel_id, int):
+        return "off"
+    try:
+        channel = await fsub_channels_collection.find_one({'channel_id': channel_id, 'status': 'active'})
+        if channel:
+            # map normal/request to on/off for compatibility with start.py callback handler
+            mode = channel.get('mode', 'normal')
+            return "on" if mode == "request" else "off"
+        return "off"
+    except Exception as e:
+        print(f"Error getting channel mode for {channel_id}: {e}")
+        return "off"
+
+async def set_channel_mode(channel_id: int, mode: str) -> bool:
+    """Set the FSub mode for a channel."""
+    if not isinstance(channel_id, int):
+        return False
+    try:
+        # map on/off from start.py callback handler to request/normal
+        db_mode = "request" if mode == "on" else "normal"
+        await fsub_channels_collection.update_one(
+            {'channel_id': channel_id},
+            {'$set': {'mode': db_mode}},
+            upsert=True
+        )
+        return True
+    except Exception as e:
+        print(f"Error setting channel mode for {channel_id}: {e}")
+        return False
