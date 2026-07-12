@@ -218,24 +218,6 @@ async def start_command(client: Client, message: Message):
             )
 
 
-# Upgraded by @Unrated_Coder from Telegram
-
-async def get_link_creation_time(channel_id):
-    """Get the creation time of the current invite link for a channel."""
-    try:
-        from database.database import channels_collection
-        channel = await channels_collection.find_one({"channel_id": channel_id, "status": "active"})
-        if channel and "invite_link_created_at" in channel:
-            return channel["invite_link_created_at"]
-        return None
-    except Exception as e:
-        print(f"Error fetching link creation time for channel {channel_id}: {e}")
-        return None
-
-# Create a global dictionary to store chat data
-chat_data_cache = {}
-
-
 async def check_subscription_status(client: Client, user_id: int, fsub_channels: list):
     must_join = []
     for ch in fsub_channels:
@@ -307,9 +289,6 @@ async def check_sub_callback(client: Client, callback_query: CallbackQuery):
 WAIT_MSG = "<b>Processing...</b>"
 
 REPLY_ERROR = """Usᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴀs ᴀ ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ Tᴇʟᴇɢʀᴀᴍ ᴍᴇssᴀɢᴇ ᴡɪᴛʜᴏᴜᴛ ᴀɴʏ sᴘᴀᴄᴇs."""
-# Define a global variable to store the cancel state
-is_canceled = False
-cancel_lock = Lock()
 
 @Client.on_message(filters.command('status') & filters.private & is_owner_or_admin)
 async def info(client: Client, message: Message):
@@ -604,7 +583,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             chat = await client.get_chat(cid)
             mode = await db.get_channel_mode(cid)
             status = "🟢 ᴏɴ" if mode == "on" else "🔴 ᴏғғ"
-            new_mode = "ᴏғғ" if mode == "on" else "on"
+            new_mode = "off" if mode == "on" else "on"
             buttons = [
                 [InlineKeyboardButton(f"ʀᴇǫ ᴍᴏᴅᴇ {'OFF' if mode == 'on' else 'ON'}", callback_data=f"rfs_toggle_{cid}_{new_mode}")],
                 [InlineKeyboardButton("‹ ʙᴀᴄᴋ", callback_data="fsub_back")]
