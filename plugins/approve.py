@@ -6,7 +6,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, User, ChatJoinRequest, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import FloodWait, ChatAdminRequired, RPCError, UserNotParticipant
-from database.database import set_approval_off, is_approval_off
+from database.database import set_approval_off, is_approval_off, get_fsub_channels
 from helper_func import *
 
 # Default settings
@@ -14,7 +14,7 @@ APPROVAL_WAIT_TIME = 0  # seconds
 AUTO_APPROVE_ENABLED = True  # Toggle for enabling/disabling auto approval 
 
 
-@Client.on_chat_join_request((filters.group | filters.channel) & filters.chat(CHAT_ID) if CHAT_ID else (filters.group | filters.channel))
+@Client.on_chat_join_request()
 async def autoapprove(client, message: ChatJoinRequest):
     global AUTO_APPROVE_ENABLED
 
@@ -23,6 +23,17 @@ async def autoapprove(client, message: ChatJoinRequest):
 
     chat = message.chat
     user = message.from_user
+
+    # Check if the chat is in CHAT_ID or if it is an FSub channel
+    is_fsub = False
+    fsub_channels = await get_fsub_channels()
+    if fsub_channels:
+        fsub_ids = [ch['channel_id'] for ch in fsub_channels]
+        if chat.id in fsub_ids:
+            is_fsub = True
+
+    if CHAT_ID and (chat.id not in CHAT_ID) and not is_fsub:
+        return
 
     # check agr approval of hai us chnl m
     if await is_approval_off(chat.id):
