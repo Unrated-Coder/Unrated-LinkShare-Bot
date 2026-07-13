@@ -76,8 +76,12 @@ async def start_command(client: Client, message: Message):
                     chat = await client.get_chat(fsub_id)
 
                     if mode == "request":
-                        # For request mode, we generate a link that creates a join request if not already present
-                        link = chat.invite_link or (await client.create_chat_invite_link(fsub_id, creates_join_request=True)).invite_link
+                        # For request mode, we generate a link that creates a join request
+                        try:
+                            link = (await client.create_chat_invite_link(fsub_id, creates_join_request=True)).invite_link
+                        except Exception as e:
+                            print(f"Failed to create join request link for {fsub_id}: {e}")
+                            link = chat.invite_link or (await client.export_chat_invite_link(fsub_id))
                     else:
                         link = chat.invite_link or (await client.export_chat_invite_link(fsub_id))
 
@@ -242,7 +246,11 @@ async def check_subscription_status(client: Client, user_id: int, fsub_channels:
             mode = ch.get('mode', 'normal')
             chat = await client.get_chat(fsub_id)
             if mode == "request":
-                link = chat.invite_link or (await client.create_chat_invite_link(fsub_id, creates_join_request=True)).invite_link
+                try:
+                    link = (await client.create_chat_invite_link(fsub_id, creates_join_request=True)).invite_link
+                except Exception as e:
+                    print(f"Failed to create join request link for {fsub_id}: {e}")
+                    link = chat.invite_link or (await client.export_chat_invite_link(fsub_id))
             else:
                 link = chat.invite_link or (await client.export_chat_invite_link(fsub_id))
             buttons.append([InlineKeyboardButton(f"Join {chat.title}", url=link)])
