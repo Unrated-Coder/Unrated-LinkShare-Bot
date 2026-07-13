@@ -1,9 +1,40 @@
 from pyrogram.types import Message
-from pyrogram import Client, filters
-from config import OWNER_ID, BOT_STATS_TEXT, USER_REPLY_TEXT
+from pyrogram import Client, filters, StopPropagation
+from config import OWNER_ID, BOT_STATS_TEXT, USER_REPLY_TEXT, USER_ROAST, ADMINS
 from datetime import datetime
 from helper_func import get_readable_time
-from database.database import full_userbase, count_users
+from database.database import full_userbase, count_users, is_admin
+
+ADMIN_COMMANDS = [
+    "addadmin", "deladmin", "admins",
+    "reqtime", "reqmode", "approveoff", "approveon",
+    "addchat", "addch", "delchat", "delch", "ch_links", "reqlink", "links", "bulklink", "genlink", "channels",
+    "status", "cancel", "broadcast",
+    "add_fsub", "del_fsub", "fsub",
+    "stats", "ban"
+]
+
+@Client.on_message(filters.command(ADMIN_COMMANDS), group=-2)
+async def admin_command_interceptor(bot: Client, message: Message):
+    if not message.from_user:
+        return
+    
+    user_id = message.from_user.id
+    
+    # Check if user is owner or admin
+    is_authorized = (user_id == OWNER_ID) or (user_id in ADMINS) or (await is_admin(user_id))
+    
+    if not is_authorized:
+        command = message.command[0].lower() if message.command else ""
+        if command in ["ban", "broadcast"]:
+            if USER_ROAST:
+                await message.reply_text(USER_ROAST)
+        else:
+            if USER_REPLY_TEXT:
+                await message.reply_text(USER_REPLY_TEXT)
+        
+        # Stop further handling of this message
+        raise StopPropagation
 
 # --- 1. NORMAL USER KE LIYE AUTO-REPLY ---
 # Isme humne commands ko exclude kar diya hai (~filters.command)
